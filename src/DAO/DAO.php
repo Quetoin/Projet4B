@@ -1,10 +1,14 @@
 <?php
 
-abstract class Database{
+namespace Projet4B\src\DAO;
 
-	const DB_HOST = 'mysql:host=db5000355523.hosting-data.io;dbname=dbs345812;charset=utf8';
-	const DB_USER = 'dbu631678';
-	const DB_PASS = '1F4#@&4V9(ERps&n';
+use PDO;
+use Exception;
+
+
+abstract class DAO{
+
+	
 
 	private $connection;
 
@@ -23,7 +27,7 @@ abstract class Database{
 
 		try{
 
-			$this->connection = new PDO(self::DB_HOST,self::DB_USER,self::DB_PASS);
+			$this->connection = new PDO(DB_HOST,DB_USER,DB_PASS);
 			$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			return $this->connection;
@@ -47,7 +51,6 @@ abstract class Database{
 		}
 
 		$result = $this->checkConnection()->query($sql);
-		$result->setFetchMode(PDO::FETCH_CLASS,static::class);
 		return $result;
 
 	}

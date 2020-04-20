@@ -1,6 +1,8 @@
 <?php
 
-class Comment extends Database{
+namespace Projet4B\src\DAO;
+
+class CommentDAO extends DAO{
 	
 	public function getCommentsFromArticle($articleId){
 		$sql="SELECT * FROM comments WHERE post_id = ?";
