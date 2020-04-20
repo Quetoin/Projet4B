@@ -3,6 +3,7 @@
     <div>
         <h1>Mon blog</h1>
         <p>En construction</p>
+        <a href="../public/index.php?route=addPost">Nouvel article</a>
 
         <?php
 

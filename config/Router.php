@@ -34,6 +34,8 @@ class Router{
 
                     $this->frontController->post($_GET['articleId']);
 
+                }elseif($_GET["route"] === "addPost"){
+                    $this->backController->addPost($_POST);
                 }else{
 
                     $this->errorController->errorNotFound();

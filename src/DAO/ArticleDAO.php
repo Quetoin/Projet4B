@@ -48,4 +48,12 @@ class ArticleDAO extends DAO{
 
 		return $this->buildObject($article);
 	}
+
+	public function addPost($article){
+		
+		extract($article);
+
+		$sql = "INSERT INTO posts(date_post, author, title, content) VALUES (CURDATE(),?,?,?)";
+		$this->createQuery($sql,[$author,$title,$content]);
+	}
 }
