@@ -39,6 +39,19 @@ class Router{
 
                 }elseif($route === "addPost"){
                     $this->backController->addPost($this->request->getPost());
+
+                }elseif($route === "home"){
+                    $this->frontController->home();
+                    
+                }elseif($route === "about"){
+                    $this->frontController->about();
+                    
+                }elseif($route === "contactForm"){
+                    $this->frontController->contactForm();
+                    
+                }elseif($route === "listPosts"){
+                    $this->frontController->listPosts();
+                    
                 }else{
 
                     $this->errorController->errorNotFound();
