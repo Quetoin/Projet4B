@@ -12,6 +12,7 @@ class BackController extends Controller{
 		if($post->get("submit")){
 
 			$this->articleDAO->addPost($post);
+			$this->session->set("add_post","Bravo, nouvel article ajouté");
 
 			header("Location:../public/index.php");
 

@@ -1,4 +1,6 @@
 <?php $this->title="Accueil";?>
+
+<?= $this->session->show("add_post");?>
         
 <h1 class="titresWhite">Bienvenue sur le site officiel de Jean Forteroche</h1>
 
