@@ -2,7 +2,7 @@
 	"autoload":{
 		"psr-4":{
 			"Projet4B\\config\\":"config/",
-      		"Projet4B\\src\\": "src/",
+      		"Projet4B\\src\\": "src/"
     
 		}
 	}

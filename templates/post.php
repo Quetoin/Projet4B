@@ -1,7 +1,5 @@
 <?php $this->title="Article";?>
-
-<div>
-    <h1>Mon blog</h1>
+<div class="mainDiv">
     <div>
         <h2><?= htmlspecialchars($article->getTitle());?></h2>
         <p><?= htmlspecialchars($article->getContent());?></p>
@@ -23,5 +21,4 @@
         <?php
             }
     ?>
-
 </div>

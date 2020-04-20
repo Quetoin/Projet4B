@@ -1,0 +1,124 @@
+@font-face{
+	font-family: 'Exo', sans-serif;
+}
+
+body{
+	font-family: "Exo";
+	margin:auto;
+	background-color: rgba(0,0,0,0.6);
+	height:100%;
+}
+
+#main{
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.3) 100%),url(../img/bg-img.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+a{
+	text-decoration: none;
+	color:black;
+} 
+
+#barreNav{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom:50px;
+	background-color: rgba(52,58,64,1);
+	height:150px;
+	width:100%;
+	position:fixed;
+}
+
+#imgLogoA{
+	align-self: center;
+}
+
+#imgLogo{
+	width:200px;
+	height:120px;
+	margin-left:50px;
+}
+
+#barreNav ul{
+	align-self: center;
+}
+
+#barreNav li{
+	display:inline;
+	margin:0px 50px;
+	color:white;
+}
+
+#barreNav a {
+	color:white;
+}
+
+#content{
+	padding:200px;
+}
+
+h1,h2{
+	margin:auto;
+	margin-bottom:20px;
+	text-align: center;
+	color:black;
+}
+
+ .titresWhite{
+ 	color:white;
+ }
+
+.mainDiv{
+	border:2px black solid;
+	border-radius:8px;
+	background-color: rgba(255,255,255,1);
+	margin:auto;
+	margin-bottom:20px;
+	padding:10px;
+	max-width:70%;
+}
+
+.home{
+	width:70%;
+	font-size:1.3em;
+	background-color: rgba(237,126,120,0.9);
+}
+
+.news{
+	background-color: rgba(059,161,209,0.9);
+	margin:auto;
+	margin-bottom:20px;
+	border-radius:8px;
+	padding:5px;
+	max-width:1240px;
+}
+
+.editable{
+	
+}
+
+#commentaires{
+	border:1px black solid;
+	background-color: white;
+	width:50%;
+	margin:auto;
+	padding:10px;
+}
+
+.commentaire{
+	border:1px black solid;
+	margin:5px;
+}
+
+#formComment{
+	display:none;
+}
+
+footer{
+	width:100%;
+	height:300px;
+	background-color: rgba(52,58,64,1);
+}

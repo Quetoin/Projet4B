@@ -1,10 +1,7 @@
 <?php $this->title="Accueil";?>
-
-    <div>
-        <h1>Mon blog</h1>
-        <p>En construction</p>
-        <a href="../public/index.php?route=addPost">Nouvel article</a>
-
+        
+        <div class="mainDiv">
+            <a href="../public/index.php?route=addPost">Nouvel article</a>
         <?php
 
         	foreach($articles as $article){
@@ -20,4 +17,5 @@
         <?php
         	}
         ?>
+        </div>
     </div>

@@ -2,18 +2,8 @@
 
 namespace Projet4B\src\controller;
 
-use Projet4B\src\DAO\ArticleDAO;
-use Projet4B\src\DAO\CommentDAO;
 
-use Projet4B\src\model\View;
-
-class BackController{
-
-	public function __construct(){
-
-		$this->view = new View();
-
-	}
+class BackController extends Controller{
 	
 	public function addPost($post){
 

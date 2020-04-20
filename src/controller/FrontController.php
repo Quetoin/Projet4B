@@ -2,24 +2,9 @@
 
 namespace Projet4B\src\controller;
 
-use Projet4B\src\DAO\ArticleDAO;
-use Projet4B\src\DAO\CommentDAO;
 
-use Projet4B\src\model\View;
+class FrontController extends Controller{
 
-
-class FrontController{
-
-	private $articleDAO;
-	private $commentDAO;
-
-	public function __construct(){
-
-		$this->articleDAO = new ArticleDAO();
-		$this->commentDAO = new CommentDAO();
-		$this->view = new View();
-
-	}
 
 	public function home(){
 
@@ -43,5 +28,7 @@ class FrontController{
         ]);
 
 	}
+
+
 
 }
