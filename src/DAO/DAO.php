@@ -45,7 +45,6 @@ abstract class DAO{
 
 		if($parameters){
 			$result = $this->checkConnection()->prepare($sql);
-			$result->setFetchMode(PDO::FETCH_CLASS,static::class);
 			$result->execute($parameters);
 			return $result;
 		}

@@ -3,13 +3,13 @@
 namespace Projet4B\src\model;
 
 
-class Article{
+class Comment{
 	
 	private $id;
-	private $title;
+	private $post_id;
 	private $content;
 	private $author;
-	private $date_post;
+	private $date_comment;
 
 
 	public function getId(){
@@ -20,12 +20,12 @@ class Article{
 		$this->id = $id;
 	}
 
-	public function getTitle(){
-		return $this->title;
+	public function getPostId(){
+		return $this->postId;
 	}
 
-	public function setTitle($title){
-		$this->title = $title;
+	public function setPostId($post_id){
+		$this->post_id = $post_id;
 	}
 
 	public function getContent(){
@@ -45,11 +45,11 @@ class Article{
 	}
 
 	public function getDate(){
-		return $this->date_post;
+		return $this->date_comment;
 	}
 
-	public function setDate($date_post){
-		$this->date_post = $date_post;
+	public function setDate($date_comment){
+		$this->date_comment = $date_comment;
 	}
 
 }

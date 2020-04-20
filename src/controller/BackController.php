@@ -1,6 +1,6 @@
 <?php
 
-namespace \Projet4B\src\controller;
+namespace Projet4B\src\controller;
 
 class BackController{
 	

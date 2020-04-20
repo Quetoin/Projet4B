@@ -27,7 +27,7 @@ class FrontController{
 
 	public function post($articleId){
 
-    	$articles = $this->articleDAO->getArticle($articleId);
+    	$article = $this->articleDAO->getArticle($articleId);
 
         $comments = $this->commentDAO->getCommentsFromArticle($articleId);
 

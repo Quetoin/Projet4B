@@ -5,6 +5,7 @@ namespace Projet4B\config;
 use Projet4B\src\controller\FrontController;
 use Projet4B\src\controller\BackController;
 use Projet4B\src\controller\ErrorController;
+
 use Exception;
 
 class Router{
