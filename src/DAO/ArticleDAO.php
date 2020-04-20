@@ -2,6 +2,7 @@
 
 namespace Projet4B\src\DAO;
 
+use App\config\Parameter;
 use Projet4B\src\model\Article;
 
 class ArticleDAO extends DAO{
@@ -49,11 +50,9 @@ class ArticleDAO extends DAO{
 		return $this->buildObject($article);
 	}
 
-	public function addPost($article){
-		
-		extract($article);
+	public function addPost($post){
 
 		$sql = "INSERT INTO posts(date_post, author, title, content) VALUES (CURDATE(),?,?,?)";
-		$this->createQuery($sql,[$author,$title,$content]);
+		$this->createQuery($sql,[$post->get("author"),$post->get("title"),$post->get("content")]);
 	}
 }

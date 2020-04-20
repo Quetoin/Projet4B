@@ -13,29 +13,32 @@ class Router{
     private $frontController;
     private $errorController;
     private $backController;
+    private $request;
 
 
     public function __construct(){
 
+        $this->request = new Request();
         $this->frontController = new FrontController();
         $this->backController = new BackController();
         $this->errorController = new ErrorController();
-
     }
 
 
     public function run(){
 
+        $route = $this->request->getGet()->get("route");
+
         try{
 
-            if(isset($_GET['route'])){
+            if(isset($route)){
 
-                if($_GET['route'] === 'post'){
+                if($route === 'post'){
 
-                    $this->frontController->post($_GET['articleId']);
+                    $this->frontController->post($this->request->getGet()->get("articleId"));
 
-                }elseif($_GET["route"] === "addPost"){
-                    $this->backController->addPost($_POST);
+                }elseif($route === "addPost"){
+                    $this->backController->addPost($this->request->getPost());
                 }else{
 
                     $this->errorController->errorNotFound();

@@ -2,16 +2,16 @@
 
 namespace Projet4B\src\controller;
 
+use Projet4B\config\Parameter;
+
 
 class BackController extends Controller{
 	
-	public function addPost($post){
+	public function addPost(Parameter $post){
 
+		if($post->get("submit")){
 
-		if(isset($post["submit"])){
-
-			$articleDAO = new ArticleDAO();
-            $articleDAO->addPost($post);
+			$this->articleDAO->addPost($post);
 
 			header("Location:../public/index.php");
 
