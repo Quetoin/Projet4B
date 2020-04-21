@@ -65,6 +65,10 @@ class Router{
                     
                     $this->backController->deletePost($this->request->getGet()->get("articleId"));
                     
+                }elseif($route === "addComment"){
+                    
+                    $this->frontController->addComment($this->request->getPost(),$this->request->getGet()->get("articleId"));
+                    
                 }else{
 
                     $this->errorController->errorNotFound();

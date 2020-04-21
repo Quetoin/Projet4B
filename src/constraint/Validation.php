@@ -13,5 +13,13 @@ class Validation{
             return $errors;
 
         }
+
+        elseif($name === 'Comment'){
+
+            $commentValidation = new CommentValidation();
+            $errors = $commentValidation->check($data);
+            return $errors;
+
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace Projet4B\src\DAO;
 
 use Projet4B\src\model\Comment;
+use Projet4B\config\Parameter;
 
 class CommentDAO extends DAO{
 
@@ -33,5 +34,12 @@ class CommentDAO extends DAO{
 		$result->closeCursor();
 
 		return $comments;
+	}
+
+	public function addComment(Parameter $post, $articleId){
+
+		$sql = "INSERT INTO comments(date_comment, author, content, post_id) VALUES (CURDATE(),?,?,?)";
+		$this->createQuery($sql,[$post->get("author"),$post->get("content"),$articleId]);
+
 	}
 }

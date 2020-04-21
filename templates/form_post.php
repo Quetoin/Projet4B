@@ -18,7 +18,7 @@ $author = isset($article) && $article->getAuthor() ? htmlspecialchars($article->
     <?=isset($errors["title"]) ? $errors["title"] :"";?>
 
     <label for="content">Contenu</label><br>
-    <textarea id="content" name="content" value="<?=$content;?>"></textarea><br>
+    <textarea id="content" name="content" placeholder="<?=$content;?>"></textarea><br>
     <?=isset($errors["content"]) ? $errors["content"] :"";?>
 
     <label for="author">Auteur</label><br>
