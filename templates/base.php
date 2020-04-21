@@ -22,7 +22,7 @@
     		</div>
       	</header>
 
-    	<div id="content">
+    	<div id="contentDiv">
         	<?= $content ?>
     	</div>
 

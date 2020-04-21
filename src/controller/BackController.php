@@ -21,6 +21,24 @@ class BackController extends Controller{
 		return $this->view->render("add_post",[
 			"post" => $post
 		]);
-
 	}
+
+
+	public function editPost(Parameter $post,$articleId){
+
+		$article = $this->articleDAO->getArticle($articleId);
+
+		if($post->get("submit")){
+
+			$this->articleDAO->editPost($post,$articleId);
+			$this->session->set("edit_post","Bravo, article modifié !");
+
+			header("Location:../public/index.php");
+		}
+
+		return $this->view->render("edit_post",[
+			"article" => $article
+		]);
+	}
+
 }

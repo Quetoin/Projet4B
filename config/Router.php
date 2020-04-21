@@ -38,19 +38,28 @@ class Router{
                     $this->frontController->post($this->request->getGet()->get("articleId"));
 
                 }elseif($route === "addPost"){
+
                     $this->backController->addPost($this->request->getPost());
 
                 }elseif($route === "home"){
+
                     $this->frontController->home();
                     
                 }elseif($route === "about"){
+
                     $this->frontController->about();
                     
                 }elseif($route === "contactForm"){
+
                     $this->frontController->contactForm();
                     
                 }elseif($route === "listPosts"){
+
                     $this->frontController->listPosts();
+                    
+                }elseif($route === "editPost"){
+                    
+                    $this->backController->editPost($this->request->getPost(),$this->request->getGet()->get("articleId"));
                     
                 }else{
 

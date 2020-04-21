@@ -55,4 +55,16 @@ class ArticleDAO extends DAO{
 		$sql = "INSERT INTO posts(date_post, author, title, content) VALUES (CURDATE(),?,?,?)";
 		$this->createQuery($sql,[$post->get("author"),$post->get("title"),$post->get("content")]);
 	}
+
+
+	public function editPost($post, $articleId){
+
+		$sql = "UPDATE posts SET title=:title, content=:content, author=:author WHERE id=:articleId";
+		$this->createQuery($sql,[
+			"title" => $post->get("title"),
+			"content" => $post->get("content"),
+			"author" => $post->get("author"),
+			"articleId" => $articleId
+		]);
+	}
 }
