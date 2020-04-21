@@ -36,10 +36,20 @@ class BackController extends Controller{
 
 		if($post->get("submit")){
 
-			$this->articleDAO->editPost($post,$articleId);
-			$this->session->set("edit_post","Bravo, article modifié !");
+			$errors=$this->validation->validate($post,"Article");
 
-			header("Location:../public/index.php");
+			if(!$errors){
+
+				$this->articleDAO->editPost($post,$articleId);
+				$this->session->set("edit_post","Bravo, article modifié !");
+
+				header("Location:../public/index.php");
+			}
+
+			return $this->view->render("edit_post", [
+				"post" => $post,
+				"errors" => $errors
+			]);
 		}
 
 		return $this->view->render("edit_post",[

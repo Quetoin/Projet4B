@@ -25,6 +25,6 @@ $author = isset($article) && $article->getAuthor() ? htmlspecialchars($article->
     <input type="text" id="author" name="author" value="<?=$author;?>"><br>
     <?=isset($errors["author"]) ? $errors["author"] :"";?>
 
-    <input type="submit" value="Envoyer" id="submit" name="submit">
+    <input type="submit" value="<?=$submit;?>" id="submit" name="submit">
 
 </form>
