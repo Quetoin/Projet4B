@@ -15,8 +15,11 @@
 
     <br>
 
-    <a href="../public/index.php">Retour à l'accueil</a>
-    <a href="../public/index.php?route=editPost&articleId=<?=$article->getId();?>">Modifier l'article</a>
+    <button><a href="../public/index.php">Retour à l'accueil</a></button>
+    <button><a href="../public/index.php?route=editPost&articleId=<?=$article->getId();?>">Modifier l'article</a></button>
+    <button><a href="../public/index.php?route=deletePost&articleId=<?=$article->getId();?>">Supprimer l'article</a></button>
+    
+
 
     <div id="comments">
         <h3>Commentaires</h3>

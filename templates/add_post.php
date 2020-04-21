@@ -7,7 +7,7 @@
 
 	    <?php include("form_post.php");?>
 
-	    <a href="../public/index.php">Retour à l'accueil</a>
+	    <button><a href="../public/index.php">Retour à l'accueil</a></button>
 
 	</div>
 
