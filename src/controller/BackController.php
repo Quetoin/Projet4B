@@ -11,16 +11,22 @@ class BackController extends Controller{
 
 		if($post->get("submit")){
 
-			$this->articleDAO->addPost($post);
-			$this->session->set("add_post","Bravo, nouvel article ajouté");
+			$errors=$this->validation->validate($post,"Article");
 
-			header("Location:../public/index.php");
+			if(!$errors){
+				$this->articleDAO->addPost($post);
+				$this->session->set("add_post","Bravo, nouvel article ajouté");
 
+				header("Location:../public/index.php");
+			}
+
+			return $this->view->render("add_post",[
+				"post" =>$post,
+				"errors" => $errors
+			]);
 		}
 		
-		return $this->view->render("add_post",[
-			"post" => $post
-		]);
+		return $this->view->render("add_post");
 	}
 
 
