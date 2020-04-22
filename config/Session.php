@@ -11,14 +11,17 @@ class Session{
 		$this->session = $session;
 	}
 
+
 	public function set($name,$value){
 		$_SESSION[$name] = $value;
 	}
+
 
 	public function get($name){
 		if(isset($_SESSION[$name]))
 		return $_SESSION[$name];
 	}
+
 
 	public function show($name){
 		if(isset($_SESSION[$name])){
@@ -28,11 +31,18 @@ class Session{
 		}
 	}
 
+
 	public function remove($name){
 		unset($_SESSION[$name]);
 	}
 
+
 	public function stop(){
 		session_destroy();
+	}
+
+
+	public function start(){
+		session_start();
 	}
 }

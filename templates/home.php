@@ -4,6 +4,8 @@
 <?= $this->session->show("edit_post");?>
 <?= $this->session->show('delete_post'); ?>
 <?= $this->session->show('registration'); ?>
+<?= $this->session->show('login'); ?>
+<?= $this->session->show('logout'); ?>
         
 <h1 class="titresWhite">Bienvenue sur le site officiel de Jean Forteroche</h1>
 

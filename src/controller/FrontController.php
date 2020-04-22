@@ -92,9 +92,27 @@ class FrontController extends Controller{
 
 		
 		if($post->get("submit")){
-			$this->userDAO->register($post);
-			$this->session->set("registration","Votre inscription est validée");
-			header("Location:../public/index.php");
+
+			$errors = $this->validation->validate($post,"User");
+
+			if($this->userDAO->checkUser($post)){
+				$errors["user"] = $this->userDAO->checkUser($post);
+			}
+
+			if(!$errors){
+
+				$this->userDAO->register($post);
+				$this->session->set("registration","Votre inscription est validée");
+				header("Location:../public/index.php");
+			}
+
+			return $this->view->render("register",[
+
+				"post" => $post,
+				"errors" => $errors
+			]);
+
+			
 		}
 
 		return $this->view->render("register");
@@ -105,9 +123,30 @@ class FrontController extends Controller{
 
 	public function login(Parameter $post){
 
+		if($post->get("submit")){
+
+			$result = $this->userDAO->login($post);
+
+			if($result && $result["isPasswordValid"]){
+
+				$this->session->set("login","Content de vous revoir");
+				$this->session->set("id",$result["result"]["id"]);
+				$this->session->set("user",$post->get("user"));
+
+				header("Location:../public/index.php");
+
+			}else{
+				$this->session->set("error_login","Le pseudo ou le mot de passe sont incorrects");
+
+				return $this->view->render("login",[
+					"post" => $post
+				]);
+			}
+
+		}
+
 		return $this->view->render("login");
 		
 	}
-
 
 }

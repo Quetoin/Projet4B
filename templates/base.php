@@ -17,8 +17,30 @@
 		          <li><a href="../public/index.php?route=listPosts">Blog</a></li>
 		          <li><a href="../public/index.php?route=about">A propos</a></li>
 		          <li><a href="../public/index.php?route=contactForm">Contact</a></li>
-		          <li><a href="../public/index.php?route=register">Inscription</a></li>
-		          <li><a href="../public/index.php?route=login">Connexion</a></li>
+
+
+
+		          <?php
+		          	if($this->session->get("user")){
+		          ?>
+		          		<li><a href="../public/index.php?route=logout">Déconnexion</a></li>
+    					<li><a href="../public/index.php?route=profile">Profil</a></li>
+		          <?php
+		          	}else{
+		          ?>
+		          		<li><a href="../public/index.php?route=register">Inscription</a></li>
+		          		<li><a href="../public/index.php?route=login">Connexion</a></li>
+		          <?php
+		          	}
+		          ?>
+
+
+
+
+
+
+
+		          
 
 	        	</ul>
     		</div>
