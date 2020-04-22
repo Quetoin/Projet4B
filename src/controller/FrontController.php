@@ -128,7 +128,7 @@ class FrontController extends Controller{
 			$result = $this->userDAO->login($post);
 
 			if($result && $result["isPasswordValid"]){
-
+				
 				$this->session->set("login","Content de vous revoir");
 				$this->session->set("id",$result["result"]["id"]);
 				$this->session->set("user",$post->get("user"));
@@ -140,6 +140,7 @@ class FrontController extends Controller{
 				}else{
 					header("Location:../public/index.php");
 				}
+				
 
 			}else{
 				$this->session->set("error_login","Le pseudo ou le mot de passe sont incorrects");

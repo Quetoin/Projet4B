@@ -22,7 +22,7 @@ class ArticleDAO extends DAO{
 	
 	public function getArticles(){
 
-		$sql = "SELECT * FROM posts ORDER BY id DESC";
+		$sql = 'SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.id DESC';
 		$result = $this->createQuery($sql);
 
 		$articles = [];
@@ -41,7 +41,7 @@ class ArticleDAO extends DAO{
 
 	public function getArticle($articleId){
 		
-		$sql = "SELECT * FROM posts WHERE id = ?";
+		$sql = 'SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id WHERE posts.id = ?';;
 		$result = $this->createQuery($sql,[$articleId]);
 
 		$article = $result->fetch();
@@ -50,20 +50,21 @@ class ArticleDAO extends DAO{
 		return $this->buildObject($article);
 	}
 
-	public function addPost($post){
+	public function addPost(Parameter $post,$userId){
 
-		$sql = "INSERT INTO posts(date_post, author, title, content) VALUES (CURDATE(),?,?,?)";
-		$this->createQuery($sql,[$post->get("author"),$post->get("title"),$post->get("content")]);
+		echo $userId;
+
+		//$sql = "INSERT INTO posts(date_post, title, content,user_id) VALUES (CURDATE(),?,?,?)";
+		//$this->createQuery($sql,[$post->get("title"),$post->get("content"),$userId]);
 	}
 
 
-	public function editPost($post, $articleId){
+	public function editPost($post, $articleId,$userId){
 
-		$sql = "UPDATE posts SET title=:title, content=:content, author=:author WHERE id=:articleId";
+		$sql = "UPDATE posts SET title=:title, content=:content WHERE id=:articleId";
 		$this->createQuery($sql,[
 			"title" => $post->get("title"),
 			"content" => $post->get("content"),
-			"author" => $post->get("author"),
 			"articleId" => $articleId
 		]);
 	}

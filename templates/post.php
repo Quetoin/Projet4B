@@ -16,8 +16,15 @@
     <br>
 
     <button><a href="../public/index.php?route=listPosts">Retour à l'accueil</a></button>
-    <button><a href="../public/index.php?route=editPost&articleId=<?=$article->getId();?>">Modifier l'article</a></button>
-    <button><a href="../public/index.php?route=deletePost&articleId=<?=$article->getId();?>">Supprimer l'article</a></button>
+
+    <?php
+        if($this->session->get("role") === "admin"){?>
+            <button><a href="../public/index.php?route=editPost&articleId=<?=$article->getId();?>">Modifier l'article</a></button>
+            <button><a href="../public/index.php?route=deletePost&articleId=<?=$article->getId();?>">Supprimer l'article</a></button>
+    <?php
+        }
+    ?>
+    
     
 
 
@@ -49,7 +56,7 @@
                 <?php
                     }
                 ?>
-                <button><a href="../public/index.php?route=deleteComment&commentId=<?=$comment->getId();?>&articleId=<?=$article->getId();?>">Supprimer le commentaire</a></button>
+                
 
         <?php
             }

@@ -7,6 +7,7 @@ use Projet4B\config\Parameter;
 
 class BackController extends Controller{
 	
+
 	public function addPost(Parameter $post){
 
 		if($post->get("submit")){
@@ -14,10 +15,14 @@ class BackController extends Controller{
 			$errors=$this->validation->validate($post,"Article");
 
 			if(!$errors){
-				$this->articleDAO->addPost($post);
+
+				echo $this->session->get("id");
+				/*
+				$this->articleDAO->addPost($post,$this->session->get("id"));
 				$this->session->set("add_post","Bravo, nouvel article ajouté");
 
 				header("Location:../public/index.php");
+				*/
 			}
 
 			return $this->view->render("add_post",[
@@ -33,6 +38,8 @@ class BackController extends Controller{
 	public function editPost(Parameter $post,$articleId){
 
 		$article = $this->articleDAO->getArticle($articleId);
+		
+		
 
 		if($post->get("submit")){
 
@@ -44,6 +51,7 @@ class BackController extends Controller{
 				$this->session->set("edit_post","Bravo, article modifié !");
 
 				header("Location:../public/index.php");
+				
 			}
 
 			return $this->view->render("edit_post", [
@@ -55,6 +63,7 @@ class BackController extends Controller{
 		return $this->view->render("edit_post",[
 			"article" => $article
 		]);
+		
 	}
 
 
