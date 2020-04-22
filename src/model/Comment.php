@@ -53,7 +53,7 @@ class Comment{
 		$this->date_comment = $date_comment;
 	}
 
-	public function getFlag(){
+	public function isFlag(){
 		return $this->flag;
 	}
 

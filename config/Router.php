@@ -73,6 +73,10 @@ class Router{
                     
                     $this->frontController->flagComment($this->request->getGet()->get("commentId"),$this->request->getGet()->get("articleId"));
                     
+                }elseif($route === "deleteComment"){
+                    
+                    $this->backController->deleteComment($this->request->getGet()->get("commentId"),$this->request->getGet()->get("articleId"));
+                    
                 }else{
 
                     $this->errorController->errorNotFound();

@@ -67,4 +67,12 @@ class BackController extends Controller{
 			header("Location:../public/index.php");
 	}
 
+	public function deleteComment($commentId,$articleId){
+
+			$this->commentDAO->deleteComment($commentId);
+
+			header("Location:../public/index.php?route=post&articleId=".$articleId);
+
+	}
+
 }

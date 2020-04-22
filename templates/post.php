@@ -35,9 +35,22 @@
             <h4><?= htmlspecialchars($comment->getAuthor());?></h4>
             <p><?= htmlspecialchars($comment->getContent());?></p>
             <p>Posté le <?= htmlspecialchars($comment->getDate());?></p>
-            <p><?= $comment->getFlag() == 0 ? "Commentaire OK" : "Commentaire signalé"?></p>
+            
 
-            <button><a href="../public/index.php?route=flagComment&commentId=<?= $comment->getId(); ?>&articleId=<?=$article->getId();?>">Signaler le commentaire</a></button>
+            <?php
+            if($comment->isFlag()){
+                ?>
+                <p>Ce commentaire a déjà été signalé</p>
+
+                <?php
+            }else{
+                ?>
+                <button><a href="../public/index.php?route=flagComment&commentId=<?= $comment->getId(); ?>&articleId=<?=$article->getId();?>">Signaler le commentaire</a></button>
+                <?php
+                    }
+                ?>
+                <button><a href="../public/index.php?route=deleteComment&commentId=<?=$comment->getId();?>&articleId=<?=$article->getId();?>">Supprimer le commentaire</a></button>
+
         <?php
             }
         ?>

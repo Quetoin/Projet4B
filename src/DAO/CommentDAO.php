@@ -39,8 +39,8 @@ class CommentDAO extends DAO{
 
 	public function addComment(Parameter $post, $articleId){
 
-		$sql = "INSERT INTO comments(date_comment, author, content, post_id) VALUES (CURDATE(),?,?,?)";
-		$this->createQuery($sql,[$post->get("author"),$post->get("content"),$articleId]);
+		$sql = "INSERT INTO comments(date_comment, author, content, post_id, flag) VALUES (CURDATE(),?,?,?,?)";
+		$this->createQuery($sql,[$post->get("author"),$post->get("content"),$articleId],0);
 
 	}
 
@@ -49,5 +49,11 @@ class CommentDAO extends DAO{
 		$sql = "UPDATE comments SET flag =? WHERE id = ?";
 		$this->createQuery($sql,[1,$commentId]);
 
+	}
+
+	public function deleteComment($commentId){
+
+		$sql = "DELETE FROM comments WHERE id = ?";
+		$this->createQuery($sql,[$commentId]);
 	}
 }
