@@ -10,8 +10,8 @@ class UserDAO extends DAO{
 
 	public function register(Parameter $post){
 
-                $sql = "INSERT INTO users (user, password, role) VALUES (?,?,?)";
-                $this->createQuery($sql,[$post->get("user"),password_hash($post->get("password"),PASSWORD_BCRYPT),"visitor"]);
+                $sql = "INSERT INTO users (user, password, role_id) VALUES (?,?,?)";
+                $this->createQuery($sql,[$post->get("user"),password_hash($post->get("password"),PASSWORD_BCRYPT),2]);
         }
 
 
@@ -29,7 +29,8 @@ class UserDAO extends DAO{
 
         public function login(Parameter $post){
 
-                $sql = "SELECT id, password FROM users WHERE user = ?";
+                $sql = 'SELECT * FROM users INNER JOIN role ON role.id = users.role_id WHERE user = ?';
+
                 $data = $this->createQuery($sql,[$post->get("user")]);
                 $result = $data->fetch();
                 $isPasswordValid = password_verify($post->get("password"), $result["password"]);

@@ -18,14 +18,16 @@
 		          <li><a href="../public/index.php?route=about">A propos</a></li>
 		          <li><a href="../public/index.php?route=contactForm">Contact</a></li>
 
-
-
 		          <?php
 		          	if($this->session->get("user")){
 		          ?>
 		          		<li><a href="../public/index.php?route=logout">Déconnexion</a></li>
     					<li><a href="../public/index.php?route=profile">Profil</a></li>
-		          <?php
+
+    			<?php if($this->session->get("role") === "admin"){?>
+    					<li><a href="../public/index.php?route=administration">Administration</a></li>
+    				<?php }
+
 		          	}else{
 		          ?>
 		          		<li><a href="../public/index.php?route=register">Inscription</a></li>
@@ -33,14 +35,6 @@
 		          <?php
 		          	}
 		          ?>
-
-
-
-
-
-
-
-		          
 
 	        	</ul>
     		</div>

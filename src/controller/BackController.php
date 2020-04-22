@@ -122,6 +122,12 @@ class BackController extends Controller{
 	}
 
 
+	public function administration(){
+
+		return $this->view->render("administration");
+	}
+
+
 	
 
 }
