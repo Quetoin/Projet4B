@@ -2,7 +2,7 @@
 
 namespace Projet4B\src\DAO;
 
-use App\config\Parameter;
+use Projet4B\config\Parameter;
 use Projet4B\src\model\Article;
 
 class ArticleDAO extends DAO{

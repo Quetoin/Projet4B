@@ -5,6 +5,7 @@ namespace Projet4B\src\controller;
 use Projet4B\config\Request;
 use Projet4B\src\constraint\Validation;
 use Projet4B\src\DAO\ArticleDAO;
+use Projet4B\src\DAO\UserDAO;
 use Projet4B\src\DAO\CommentDAO;
 use Projet4B\src\model\View;
 
@@ -12,6 +13,7 @@ abstract class Controller{
 
 	protected $articleDAO;
 	protected $commentDAO;
+	protected $userDAO;
 	protected $view;
 
 	private $request;
@@ -25,6 +27,7 @@ abstract class Controller{
 
 		$this->articleDAO = new ArticleDAO();
 		$this->commentDAO = new CommentDAO();
+		$this->userDAO = new UserDAO();
 		$this->view = new View();
 		$this->request = new Request();
 		$this->validation = new Validation();

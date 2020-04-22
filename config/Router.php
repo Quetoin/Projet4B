@@ -77,6 +77,14 @@ class Router{
                     
                     $this->backController->deleteComment($this->request->getGet()->get("commentId"),$this->request->getGet()->get("articleId"));
                     
+                }elseif($route === "register"){
+                    
+                    $this->frontController->register($this->request->getPost());
+                    
+                }elseif($route === "login"){
+                    
+                    $this->frontController->login($this->request->getPost());
+                    
                 }else{
 
                     $this->errorController->errorNotFound();

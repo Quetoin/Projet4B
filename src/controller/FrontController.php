@@ -87,8 +87,27 @@ class FrontController extends Controller{
 
 	}
 
-	
 
+	public function register(Parameter $post){
+
+		
+		if($post->get("submit")){
+			$this->userDAO->register($post);
+			$this->session->set("registration","Votre inscription est validée");
+			header("Location:../public/index.php");
+		}
+
+		return $this->view->render("register");
+
+
+	}
+
+
+	public function login(Parameter $post){
+
+		return $this->view->render("login");
+		
+	}
 
 
 }
