@@ -48,6 +48,13 @@ class UserDAO extends DAO{
                 $this->createQuery($sql,[password_hash($post->get("password"), PASSWORD_BCRYPT),$user]);
 
         }
+
+        public function deleteAccount($user){
+
+                $sql = "DELETE FROM users WHERE user = ?";
+                $this->createQuery($sql,[$user]);
+
+        }
 	
 
 }

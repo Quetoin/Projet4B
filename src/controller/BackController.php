@@ -85,13 +85,29 @@ class BackController extends Controller{
 
 	public function logout(){
 
-		$this->session->stop();
-		$this->session->start();
-		$this->session->set("logout","A bientôt");
-		header("Location:../public/index.php");
+		$this->deleteOrLogout("logout");
+		
 
 	}
 
+	public function deleteAccount(){
+		$this->userDAO->deleteAccount($this->session->get("user"));
+		$this->deleteOrLogout("delete");
+	}
+
+
+	public function deleteOrLogout($param){
+
+		$this->session->stop();
+		$this->session->start();
+		if($param == "logout"){
+			$this->session->set("logout","A bientôt");
+		}else{
+			$this->session->set("delete_account","Votre compte a bien été supprimé");
+		}
+		
+		header("Location:../public/index.php");
+	}
 
 
 	public function updatePassword(Parameter $post){
@@ -104,5 +120,8 @@ class BackController extends Controller{
 
 		return $this->view->render("update_password");
 	}
+
+
+	
 
 }

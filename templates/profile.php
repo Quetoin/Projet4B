@@ -8,6 +8,7 @@
     <h3><?= $this->session->get('user'); ?></h3>
 
     <button><a href="../public/index.php?route=updatePassword">Modifier son mot de passe</a></button>
+    <button><a href="../public/index.php?route=deleteAccount">Supprimer son compte</a></button>
 
 </div>
 

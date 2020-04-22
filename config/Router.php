@@ -97,6 +97,10 @@ class Router{
                     
                     $this->backController->updatePassword($this->request->getPost());
                     
+                }elseif($route === "deleteAccount"){
+                    
+                    $this->backController->deleteAccount();
+                    
                 }else{
 
                     $this->errorController->errorNotFound();
