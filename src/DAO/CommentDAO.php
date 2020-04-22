@@ -16,6 +16,7 @@ class CommentDAO extends DAO{
         $comment->setContent($row['content']);
         $comment->setAuthor($row['author']);
         $comment->setDate($row['comment_date']);
+        $comment->setFlag($row['flag']);
 
         return $comment;
 	}
@@ -40,6 +41,13 @@ class CommentDAO extends DAO{
 
 		$sql = "INSERT INTO comments(date_comment, author, content, post_id) VALUES (CURDATE(),?,?,?)";
 		$this->createQuery($sql,[$post->get("author"),$post->get("content"),$articleId]);
+
+	}
+
+	public function flagComment($commentId){
+
+		$sql = "UPDATE comments SET flag =? WHERE id = ?";
+		$this->createQuery($sql,[1,$commentId]);
 
 	}
 }

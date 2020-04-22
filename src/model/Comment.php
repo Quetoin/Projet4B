@@ -10,6 +10,7 @@ class Comment{
 	private $content;
 	private $author;
 	private $date_comment;
+	private $flag;
 
 
 	public function getId(){
@@ -50,6 +51,14 @@ class Comment{
 
 	public function setDate($date_comment){
 		$this->date_comment = $date_comment;
+	}
+
+	public function getFlag(){
+		return $this->flag;
+	}
+
+	public function setFlag($flag){
+		$this->flag = $flag;
 	}
 
 }

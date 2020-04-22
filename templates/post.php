@@ -15,7 +15,7 @@
 
     <br>
 
-    <button><a href="../public/index.php">Retour à l'accueil</a></button>
+    <button><a href="../public/index.php?route=listPosts">Retour à l'accueil</a></button>
     <button><a href="../public/index.php?route=editPost&articleId=<?=$article->getId();?>">Modifier l'article</a></button>
     <button><a href="../public/index.php?route=deletePost&articleId=<?=$article->getId();?>">Supprimer l'article</a></button>
     
@@ -35,7 +35,9 @@
             <h4><?= htmlspecialchars($comment->getAuthor());?></h4>
             <p><?= htmlspecialchars($comment->getContent());?></p>
             <p>Posté le <?= htmlspecialchars($comment->getDate());?></p>
-        
+            <p><?= $comment->getFlag() == 0 ? "Commentaire OK" : "Commentaire signalé"?></p>
+
+            <button><a href="../public/index.php?route=flagComment&commentId=<?= $comment->getId(); ?>&articleId=<?=$article->getId();?>">Signaler le commentaire</a></button>
         <?php
             }
         ?>

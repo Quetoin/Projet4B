@@ -79,5 +79,14 @@ class FrontController extends Controller{
 	}
 
 
+	public function flagComment($commentId,$articleId){
+
+			$this->commentDAO->flagComment($commentId);
+
+			header("Location:../public/index.php?route=post&articleId=".$articleId);
+
+	}
+
+
 
 }
