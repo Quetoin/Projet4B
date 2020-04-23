@@ -16,14 +16,12 @@ class ArticleDAO extends DAO{
         $article->setContent($row['content']);
         $article->setUser_id($row['user_id']);
         $article->setDate($row['date_post']);
+        
 
         return $article;
 	}
 	
 	public function getArticles(){
-
-		$sql2 = 'SELECT users.user FROM users INNER JOIN user'
-
 
 		$sql = 'SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.id DESC';
 		$result = $this->createQuery($sql);
@@ -33,12 +31,19 @@ class ArticleDAO extends DAO{
 		foreach($result as $row){
 			$articleId = $row["id"];
 			$articles[$articleId] = $this->buildObject($row);
+
+			$sql = "SELECT user FROM users WHERE Id = ? ";
+			$result = $this->createQuery($sql,[$articles[$articleId]->getUser_id()]);
+			$user_name = $result->fetch();
+			
+			$articles[$articleId]->setAuthor($user_name["user"]);
 		}
 
 		$result->closeCursor();
-
+		
+		
 		return $articles;
-
+		
 
 	}
 
@@ -48,10 +53,19 @@ class ArticleDAO extends DAO{
 		$sql = 'SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id WHERE posts.id = ?';;
 		$result = $this->createQuery($sql,[$articleId]);
 
+
 		$article = $result->fetch();
 		$result->closeCursor();
 
-		return $this->buildObject($article);
+		$article = $this->buildObject($article);
+
+		$sql = "SELECT user FROM users WHERE Id = ? ";
+		$result = $this->createQuery($sql,[$article->getUser_id()]);
+		$user_name = $result->fetch();
+
+		$article->setAuthor($user_name["user"]);
+
+		return $article;
 	}
 
 	public function addPost(Parameter $post,$userId){
@@ -61,7 +75,7 @@ class ArticleDAO extends DAO{
 	}
 
 
-	public function editPost($post, $articleId,$userId){
+	public function editPost($post, $articleId){
 
 		$sql = "UPDATE posts SET title=:title, content=:content WHERE id=:articleId";
 		$this->createQuery($sql,[

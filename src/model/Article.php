@@ -52,4 +52,12 @@ class Article{
 		$this->date_post = $date_post;
 	}
 
+	public function getAuthor(){
+		return $this->author;
+	}
+
+	public function setAuthor($author){
+		$this->author = $author;
+	}
+
 }

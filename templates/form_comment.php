@@ -10,10 +10,6 @@ $author = isset($post) ? htmlspecialchars($post->get("author")) : "";
 
 <form method="post" action="../public/index.php?route=addComment&articleId=<?= htmlspecialchars($article->getId()); ?>">
 
-    <label for="author">Pseudo</label><br>
-    <input type="text" id="author" name="author" value="<?= $author?>"><br>
-    <?= isset($errors['author']) ? $errors['author'] : ''; ?>
-
     <label for="content">Message</label><br>
     <textarea id="content" name="content" placeholder="<?=$content?>"></textarea><br>
      <?= isset($errors['content']) ? $errors['content'] : ''; ?>

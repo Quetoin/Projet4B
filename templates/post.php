@@ -7,8 +7,7 @@
 
         <h2><?= htmlspecialchars($article->getTitle());?></h2>
         <p><?= htmlspecialchars($article->getContent());?></p>
-        <p><?= htmlspecialchars($article->getUser_id());?></p>
-        <p>Créé le : <?= htmlspecialchars($article->getDate());?></p>
+        <p>Créé le : <?= htmlspecialchars($article->getDate());?> par <?= htmlspecialchars($article->getAuthor());?></p>
 
     </div>
 
@@ -39,9 +38,8 @@
             foreach($comments as $comment){
         ?>
 
-            <h4><?= htmlspecialchars($comment->getUser_id());?></h4>
             <p><?= htmlspecialchars($comment->getContent());?></p>
-            <p>Posté le <?= htmlspecialchars($comment->getDate());?></p>
+            <p>Posté le <?= htmlspecialchars($comment->getDate());?> par <?= htmlspecialchars($comment->getAuthor());?></p>
             
 
             <?php

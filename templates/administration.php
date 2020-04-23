@@ -4,7 +4,6 @@
 <?= $this->session->show("add_post");?>
 <?= $this->session->show("edit_post");?>
 <?= $this->session->show('delete_post'); ?>
-<?php echo $this->session->get('id'); ?>
 
 <h2 class="titresWhite">Page d'administration</h2>
 
@@ -28,6 +27,9 @@
 		        <h3><a href="../public/index.php?route=post&articleId=<?=htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a></h3>
 		        <p><?= htmlspecialchars($article->getContent());?></p>
 		        <p>Créé le : <?= htmlspecialchars($article->getDate());?> par <?= htmlspecialchars($article->getAuthor());?></p>
+				<br>
+		        <button><a href="../public/index.php?route=editPost&articleId=<?=$article->getId();?>">Modifier l'article</a></button>
+		        <button><a href="../public/index.php?route=deletePost&articleId=<?=$article->getId();?>">Supprimer l'article</a></button>
 		    </div>
 		    <br>
         <?php

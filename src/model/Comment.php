@@ -8,10 +8,10 @@ class Comment{
 	private $id;
 	private $post_id;
 	private $content;
-	private $author;
+	private $user_id;
 	private $date_comment;
 	private $flag;
-
+	private $author;
 
 	public function getId(){
 		return $this->id;
@@ -37,12 +37,12 @@ class Comment{
 		$this->content = $content;
 	}
 
-	public function getAuthor(){
-		return $this->author;
+	public function getUser_id(){
+		return $this->user_id;
 	}
 
-	public function setAuthor($author){
-		$this->author = $author;
+	public function setUser_id($user_id){
+		$this->user_id = $user_id;
 	}
 
 	public function getDate(){
@@ -59,6 +59,14 @@ class Comment{
 
 	public function setFlag($flag){
 		$this->flag = $flag;
+	}
+
+	public function getAuthor(){
+		return $this->author;
+	}
+
+	public function setAuthor($author){
+		$this->author = $author;
 	}
 
 }

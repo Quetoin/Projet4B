@@ -14,8 +14,8 @@ class CommentDAO extends DAO{
         $comment->setId($row['id']);
         $comment->setPostId($row['post_id']);
         $comment->setContent($row['content']);
-        $comment->setAuthor($row['author']);
-        $comment->setDate($row['comment_date']);
+        $comment->setUser_id($row['user_id']);
+        $comment->setDate($row['date_comment']);
         $comment->setFlag($row['flag']);
 
         return $comment;
@@ -30,6 +30,12 @@ class CommentDAO extends DAO{
 		foreach($result as $row){
 			$commentId = $row["id"];
 			$comments[$commentId] = $this->buildObject($row);
+
+			$sql = "SELECT user FROM users WHERE Id = ? ";
+			$result = $this->createQuery($sql,[$comments[$commentId]->getUser_id()]);
+			$user_name = $result->fetch();
+			
+			$comments[$commentId]->setAuthor($user_name["user"]);
 		}
 
 		$result->closeCursor();
@@ -37,10 +43,10 @@ class CommentDAO extends DAO{
 		return $comments;
 	}
 
-	public function addComment(Parameter $post, $articleId){
+	public function addComment(Parameter $post, $articleId,$userId){
 
-		$sql = "INSERT INTO comments(date_comment, author, content, post_id, flag) VALUES (CURDATE(),?,?,?,?)";
-		$this->createQuery($sql,[$post->get("author"),$post->get("content"),$articleId],0);
+		$sql = "INSERT INTO comments(date_comment, user_id, content, post_id, flag) VALUES (CURDATE(),?,?,?,?)";
+		$this->createQuery($sql,[$userId,$post->get("content"),$articleId,0]);
 
 	}
 

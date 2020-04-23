@@ -58,7 +58,7 @@ class FrontController extends Controller{
 
     		if(!$errors){
 
-    			$this->commentDAO->addComment($post,$articleId);
+    			$this->commentDAO->addComment($post,$articleId,$this->session->get("id"));
 				$this->session->set("add_comment","Bravo, nouveau commentaire ajouté");
 				header("Location:../public/index.php?route=post&articleId=".$articleId);
 
@@ -130,7 +130,7 @@ class FrontController extends Controller{
 			if($result && $result["isPasswordValid"]){
 				
 				$this->session->set("login","Content de vous revoir");
-				$this->session->set("id",$result["result"]["id"]);
+				$this->session->set("id",$result["result"]["Id"]);
 				$this->session->set("user",$post->get("user"));
 				$this->session->set("role",$result["result"]["name"]);
 

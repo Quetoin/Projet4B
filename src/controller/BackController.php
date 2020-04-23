@@ -18,7 +18,7 @@ class BackController extends Controller{
 				$this->articleDAO->addPost($post,$this->session->get("id"));
 				$this->session->set("add_post","Bravo, nouvel article ajouté");
 
-				header("Location:../public/index.php");
+				header("Location:../public/index.php?route=administration");
 			}
 
 			return $this->view->render("add_post",[
@@ -46,7 +46,7 @@ class BackController extends Controller{
 				$this->articleDAO->editPost($post,$articleId);
 				$this->session->set("edit_post","Bravo, article modifié !");
 
-				header("Location:../public/index.php");
+				header("Location:../public/index.php?route=administration");
 				
 			}
 
@@ -69,7 +69,7 @@ class BackController extends Controller{
 			$this->articleDAO->deletePost($articleId);
 			$this->session->set('delete_post', 'L\' article a bien été supprimé');
 			
-			header("Location:../public/index.php");
+			header("Location:../public/index.php?route=administration");
 	}
 
 	public function deleteComment($commentId,$articleId){
@@ -129,10 +129,11 @@ class BackController extends Controller{
 
 	public function administration(){
 
-		return $this->view->render("administration");
+		$articles = $this->articleDAO->getArticles();
+
+		return $this->view->render("administration",[
+			"articles" => $articles
+		]);
 	}
-
-
-	
 
 }
