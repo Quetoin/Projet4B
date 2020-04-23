@@ -4,7 +4,7 @@
 <?= $this->session->show("add_post");?>
 <?= $this->session->show("edit_post");?>
 <?= $this->session->show('delete_post'); ?>
-<?= $this->session->show('id'); ?>
+<?php echo $this->session->get('id'); ?>
 
 <h2 class="titresWhite">Page d'administration</h2>
 

@@ -14,13 +14,16 @@ class ArticleDAO extends DAO{
         $article->setId($row['id']);
         $article->setTitle($row['title']);
         $article->setContent($row['content']);
-        $article->setAuthor($row['author']);
+        $article->setUser_id($row['user_id']);
         $article->setDate($row['date_post']);
 
         return $article;
 	}
 	
 	public function getArticles(){
+
+		$sql2 = 'SELECT users.user FROM users INNER JOIN user'
+
 
 		$sql = 'SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.id DESC';
 		$result = $this->createQuery($sql);
@@ -39,6 +42,7 @@ class ArticleDAO extends DAO{
 
 	}
 
+
 	public function getArticle($articleId){
 		
 		$sql = 'SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id WHERE posts.id = ?';;
@@ -52,10 +56,8 @@ class ArticleDAO extends DAO{
 
 	public function addPost(Parameter $post,$userId){
 
-		echo $userId;
-
-		//$sql = "INSERT INTO posts(date_post, title, content,user_id) VALUES (CURDATE(),?,?,?)";
-		//$this->createQuery($sql,[$post->get("title"),$post->get("content"),$userId]);
+		$sql = "INSERT INTO posts(date_post, title, content,user_id) VALUES (CURDATE(),?,?,?)";
+		$this->createQuery($sql,[$post->get("title"),$post->get("content"),$userId]);
 	}
 
 

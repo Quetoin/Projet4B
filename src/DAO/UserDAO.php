@@ -50,9 +50,18 @@ class UserDAO extends DAO{
 
         }
 
+
         public function deleteAccount($user){
 
                 $sql = "DELETE FROM users WHERE user = ?";
+                $this->createQuery($sql,[$user]);
+
+        }
+
+
+        public function getUsers($userId){
+
+                $sql = "SELECT * FROM users WHERE id = ?";
                 $this->createQuery($sql,[$user]);
 
         }

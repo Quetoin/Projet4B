@@ -15,14 +15,10 @@ class BackController extends Controller{
 			$errors=$this->validation->validate($post,"Article");
 
 			if(!$errors){
-
-				echo $this->session->get("id");
-				/*
 				$this->articleDAO->addPost($post,$this->session->get("id"));
 				$this->session->set("add_post","Bravo, nouvel article ajouté");
 
 				header("Location:../public/index.php");
-				*/
 			}
 
 			return $this->view->render("add_post",[

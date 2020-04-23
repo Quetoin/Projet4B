@@ -8,7 +8,6 @@
 <?= $this->session->show('logout'); ?>
 <?= $this->session->show('delete_account'); ?>
 <?= $this->session->show('update_password'); ?>
-<?= $this->session->show("id");?>
         
 <h1 class="titresWhite">Bienvenue sur le site officiel de Jean Forteroche</h1>
 

@@ -8,7 +8,7 @@ class Article{
 	private $id;
 	private $title;
 	private $content;
-	private $author;
+	private $user_id;
 	private $date_post;
 
 
@@ -36,12 +36,12 @@ class Article{
 		$this->content = $content;
 	}
 
-	public function getAuthor(){
-		return $this->author;
+	public function getUser_id(){
+		return $this->user_id;
 	}
 
-	public function setAuthor($author){
-		$this->author = $author;
+	public function setUser_id($user_id){
+		$this->user_id = $user_id;
 	}
 
 	public function getDate(){
