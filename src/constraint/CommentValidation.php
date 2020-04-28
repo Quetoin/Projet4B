@@ -73,6 +73,11 @@ class CommentValidation extends Validation{
 
             return $this->constraint->minLength('contenu', $value, 2);
         }
+        
+        if($this->constraint->maxLength($name, $value, 255)){
+            
+            return $this->constraint->maxLength('auteur', $value, 255);
+        }
     }
 
 

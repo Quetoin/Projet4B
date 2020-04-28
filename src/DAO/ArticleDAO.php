@@ -35,8 +35,13 @@ class ArticleDAO extends DAO{
 			$sql = "SELECT user FROM users WHERE Id = ? ";
 			$result = $this->createQuery($sql,[$articles[$articleId]->getUser_id()]);
 			$user_name = $result->fetch();
+
+			$sql = "SELECT COUNT(id) FROM comments WHERE post_id = ? ";
+			$result = $this->createQuery($sql,[$articles[$articleId]->getId()]);
+			$nbComments = $result->fetch();
 			
 			$articles[$articleId]->setAuthor($user_name["user"]);
+			$articles[$articleId]->setNbComments($nbComments[0]);
 		}
 
 		$result->closeCursor();
@@ -70,7 +75,7 @@ class ArticleDAO extends DAO{
 
 	public function addPost(Parameter $post,$userId){
 
-		$sql = "INSERT INTO posts(date_post, title, content,user_id) VALUES (CURDATE(),?,?,?)";
+		$sql = "INSERT INTO posts(date_post, title, content,user_id) VALUES (NOW(),?,?,?)";
 		$this->createQuery($sql,[$post->get("title"),$post->get("content"),$userId]);
 	}
 

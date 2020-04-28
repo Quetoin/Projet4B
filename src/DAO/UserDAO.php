@@ -8,6 +8,38 @@ use Projet4B\config\Parameter;
 class UserDAO extends DAO{
 
 
+        private function buildObject($row){
+
+                $user = new User();
+                $user->setId($row['Id']);
+                $user->setUser($row['user']);
+                $user->setRole($row['role_id']);
+                
+
+                return $user;
+        }
+
+
+        public function getUsers(){
+
+                $sql = "SELECT * FROM users";
+                $result = $this->createQuery($sql);
+
+                $users = [];
+
+                foreach($result as $row){
+
+                        $userId = $row["Id"];
+                        $users[$userId] = $this->buildObject($row);
+
+                }
+
+                $result->closeCursor();
+                
+                return $users;
+        }
+
+
 	public function register(Parameter $post){
 
                 $sql = "INSERT INTO users (user, password, role_id) VALUES (?,?,?)";
@@ -45,8 +77,18 @@ class UserDAO extends DAO{
 
         public function updatePassword(Parameter $post,$user){
 
-                $sql = "UPDATE users SET password = ? WHERE user = ?";
-                $this->createQuery($sql,[password_hash($post->get("password"), PASSWORD_BCRYPT),$user]);
+                $sql = "SELECT * FROM users WHERE user = ?";
+                $data = $this->createQuery($sql,$user);
+                $result = $data->fetch();
+                $isPasswordValid = password_verify($post->get("oldPassword"), $result["password"]);
+
+                if($isPasswordValid){
+                        $sql = "UPDATE users SET password = ? WHERE user = ?";
+                        $this->createQuery($sql,[password_hash($post->get("password"), PASSWORD_BCRYPT),$user]);
+                        
+                }
+
+                return $isPasswordValid;
 
         }
 
@@ -55,6 +97,14 @@ class UserDAO extends DAO{
 
                 $sql = "DELETE FROM users WHERE user = ?";
                 $this->createQuery($sql,[$user]);
+
+        }
+
+
+        public function deleteUser($userId){
+
+                $sql = "DELETE FROM users WHERE Id = ?";
+                $this->createQuery($sql,[$userId]);
 
         }
 

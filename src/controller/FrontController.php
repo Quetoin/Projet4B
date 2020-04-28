@@ -101,9 +101,11 @@ class FrontController extends Controller{
 
 			if(!$errors){
 
-				$this->userDAO->register($post);
-				$this->session->set("registration","Votre inscription est validée");
-				header("Location:../public/index.php");
+				if($post->get("password") === $post->get("password2")){
+					$this->userDAO->register($post);
+					$this->session->set("registration","Votre inscription est validée");
+					header("Location:../public/index.php");
+				}
 			}
 
 			return $this->view->render("register",[
@@ -126,7 +128,9 @@ class FrontController extends Controller{
 		if($post->get("submit")){
 
 			$result = $this->userDAO->login($post);
-
+			
+			
+			
 			if($result && $result["isPasswordValid"]){
 				
 				$this->session->set("login","Content de vous revoir");
@@ -140,7 +144,6 @@ class FrontController extends Controller{
 				}else{
 					header("Location:../public/index.php");
 				}
-				
 
 			}else{
 				$this->session->set("error_login","Le pseudo ou le mot de passe sont incorrects");

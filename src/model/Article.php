@@ -10,6 +10,7 @@ class Article{
 	private $content;
 	private $user_id;
 	private $date_post;
+	private $nbComments;
 
 
 	public function getId(){
@@ -58,6 +59,14 @@ class Article{
 
 	public function setAuthor($author){
 		$this->author = $author;
+	}
+
+	public function getNbComments(){
+		return $this->nbComments;
+	}
+
+	public function setNbComments($nbComments){
+		$this->nbComments = $nbComments;
 	}
 
 }

@@ -73,9 +73,13 @@ class Router{
                     
                     $this->frontController->flagComment($this->request->getGet()->get("commentId"),$this->request->getGet()->get("articleId"));
                     
+                }elseif($route === "unflagComment"){
+                    
+                    $this->backController->unflagComment($this->request->getGet()->get("commentId"));
+                    
                 }elseif($route === "deleteComment"){
                     
-                    $this->backController->deleteComment($this->request->getGet()->get("commentId"),$this->request->getGet()->get("articleId"));
+                    $this->backController->deleteComment($this->request->getGet()->get("commentId"));
                     
                 }elseif($route === "register"){
                     
@@ -100,6 +104,10 @@ class Router{
                 }elseif($route === "deleteAccount"){
                     
                     $this->backController->deleteAccount();
+                    
+                }elseif($route === "deleteUser"){
+                    
+                    $this->backController->deleteUser($this->request->getGet()->get("userId"));
                     
                 }elseif($route === "administration"){
                     

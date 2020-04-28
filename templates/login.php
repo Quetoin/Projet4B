@@ -5,7 +5,6 @@
 
 <div class="mainDiv">
 
-	<a href="../public/index.php">Retour à l'accueil</a>
 
     <form method="post" action="../public/index.php?route=login">
 

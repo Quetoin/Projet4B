@@ -21,6 +21,7 @@ class CommentDAO extends DAO{
         return $comment;
 	}
 	
+
 	public function getCommentsFromArticle($articleId){
 		$sql="SELECT * FROM comments WHERE post_id = ?";
 		$result = $this->createQuery($sql,[$articleId]);
@@ -43,12 +44,14 @@ class CommentDAO extends DAO{
 		return $comments;
 	}
 
+
 	public function addComment(Parameter $post, $articleId,$userId){
 
-		$sql = "INSERT INTO comments(date_comment, user_id, content, post_id, flag) VALUES (CURDATE(),?,?,?,?)";
+		$sql = "INSERT INTO comments(date_comment, user_id, content, post_id, flag) VALUES (NOW(),?,?,?,?)";
 		$this->createQuery($sql,[$userId,$post->get("content"),$articleId,0]);
 
 	}
+
 
 	public function flagComment($commentId){
 
@@ -57,9 +60,42 @@ class CommentDAO extends DAO{
 
 	}
 
+
+	public function unflagComment($commentId){
+
+		$sql = "UPDATE comments SET flag =? WHERE id = ?";
+		$this->createQuery($sql,[0,$commentId]);
+
+	}
+
+
 	public function deleteComment($commentId){
 
 		$sql = "DELETE FROM comments WHERE id = ?";
 		$this->createQuery($sql,[$commentId]);
+	}
+
+
+	public function getFlagComments(){
+		$sql = "SELECT * FROM comments WHERE flag = ? ORDER BY date_comment DESC";
+		$result = $this->createQuery($sql,[1]);
+
+		$comments = [];
+
+		foreach($result as $row){
+			$commentId = $row["id"];
+			$comments[$commentId] = $this->buildObject($row);
+
+			$sql = "SELECT user FROM users WHERE Id = ? ";
+			$result = $this->createQuery($sql,[$comments[$commentId]->getUser_id()]);
+			$user_name = $result->fetch();
+			
+			$comments[$commentId]->setAuthor($user_name["user"]);
+		}
+
+		$result->closeCursor();
+
+		return $comments;
+
 	}
 }
