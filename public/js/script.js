@@ -1,7 +1,5 @@
-var viewFormComment = false;
-
 var widthTiny = 1000;
-
+var isBurgerDisplayed = 0;
 
 function getTinySize(){
 	if(window.innerWidth >= 1200){
@@ -15,8 +13,28 @@ function getTinySize(){
 	}
 }
 
-
 getTinySize();
+
+
+
+function animationBurger(x) {
+  x.classList.toggle("change");
+  var linkBurger = document.getElementById("linksBurger");
+  var container = document.getElementById("containerBurger");
+
+  if(!isBurgerDisplayed){
+  	linkBurger.style.display = "flex";
+  	isBurgerDisplayed = 1;
+  	container.style.backgroundColor = "rgba(41,70,100,1)";
+  }else{
+  	linkBurger.style.display = "none";
+  	isBurgerDisplayed = 0;
+  	container.style.backgroundColor = "rgba(52,58,64,1)";
+  }
+  
+} 
+
+
 
 
 	tinymce.init({

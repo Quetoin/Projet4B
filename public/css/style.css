@@ -70,6 +70,62 @@ a{
 
 
 
+/*-- Burger Menu pour Mobile -- */
+
+#barreNavMobile{
+	display:none;
+	flex-direction: row;
+	background-color: rgba(52,58,64,1);
+	width:100%;
+	position:fixed;
+	z-index:10;
+	margin-bottom:50px;
+	height:150px;
+	justify-content: space-between;
+}
+
+.container {
+	display: inline-block;
+	cursor: pointer;
+	margin-right:200px;
+	padding-top:40px;
+	height: calc(100% - 40px);
+}
+
+.bar1, .bar2, .bar3 {
+	width: 35px;
+	height: 5px;
+	background-color: white;
+	margin: 6px 0;
+	transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+	-webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+	transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+	opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+	-webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+	transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+#linksBurger{
+	display:none;
+	width:200px;
+	height:150px;
+	background-color: rgba(41,70,100,1);
+	color:white;
+}
+
+
 
 
 
@@ -180,8 +236,7 @@ td{
 
 .news{
 	margin:auto;
-	margin-bottom:20px;
-	padding:5px;
+	padding:20px 5px;
 	max-width:1240px;
 	border-bottom:1px grey solid;
 }
@@ -246,38 +301,83 @@ footer{
 
 
 
-@media screen and (min-width: 1080px) and (max-width: 1320px){
+
+
+
+
+
+@media screen and (min-width: 1081px) and (max-width: 1380px){
 
 	#barreNav li{
 		margin:0px 25px;
 	}
 
-}
-
-@media screen and (min-width: 850px) and (max-width: 1080px){
-
-	#barreNav li{
-		margin:0px 12px;
+	.mainDiv, .home{
+		width:70%;
 	}
 
 }
 
 
-@media screen and (min-width: 320px) and (max-width: 640px){
 
+@media screen and (max-width: 1080px){
 
 	#barreNav{
-		flex-direction: column;
-		margin-bottom:50px;
-		height:200px;
+		display:none;
 	}
 
-	#barreNav li{
-		margin:0px 5px;
+	#barreNavMobile{
+		display: flex;
 	}
 
 	#imgLogo{
+		margin-right:50px;
+		margin-left:0px;
+	}
+
+	#toFillBarre{
+		width:60%;
+	}
+
+	.container{
 		margin:0px;
+	}
+
+	#linksBurger a{
+		color:white;
+	}
+
+	#contentDiv{
+		padding-top:250px;
+	}
+
+	.mainDiv, .home{
+		width:70%;
+	}
+
+}
+
+
+
+@media screen and (max-width: 640px){
+
+
+	#barreNavMobile{
+		height:200px;
+	}
+
+	.container{
+		height: calc(100% - 40px);
+	}
+
+	#linksBurger{
+		display:none;
+		width:250px;
+		height:200px;
+	}
+
+	#linksBurger ul{
+		padding:20px;
 	}
 
 	#mainDivAdministration{
