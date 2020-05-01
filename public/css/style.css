@@ -190,6 +190,18 @@ h1,h2{
 }
 
 
+#mainDivBiographie{
+	display:flex;
+	flex-direction: column;
+}
+
+#portrait{
+	width:450px;
+	height:300px;
+	align-self: center;
+}
+
+
 
 
 
@@ -378,6 +390,11 @@ footer{
 
 	#linksBurger ul{
 		padding:20px;
+	}
+
+	#portrait{
+		width:300px;
+		height:200px;
 	}
 
 	#mainDivAdministration{
