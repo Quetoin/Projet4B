@@ -1,7 +1,7 @@
 <?php $title = 'A propos'; ?>
 
 
-<h2 class="titresWhite">Ma biographie</h2>
+<h1 class="titresWhite">Ma biographie</h1>
 
   <div id="mainDivBiographie" class="mainDiv">
     <img src="img/portrait.jpg" id="portrait" alt="portrait Jean Forteroche">

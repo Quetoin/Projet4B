@@ -3,6 +3,10 @@
 
 <?php $this->session->show("error_login"); ?>
 
+
+<h1 class="titresWhite">Connexion</h1>
+
+
 <div class="mainDiv">
 
 

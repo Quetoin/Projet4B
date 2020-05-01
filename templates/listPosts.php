@@ -1,6 +1,6 @@
 <?php $this->title="Blog";?>
         
-        <h2 class="titresWhite">Articles</h2>
+        <h1 class="titresWhite">Articles</h1>
         <div class="mainDiv">
 
             <div id="introListPosts">

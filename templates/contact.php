@@ -1,6 +1,6 @@
 <?php $this->title="Contact";?>
         
-<h2 class="titresWhite">Formulaire de contact</h2>
+<h1 class="titresWhite">Formulaire de contact</h1>
 
   <div id="mainDivContact" class="mainDiv">
     <form action="index.php?action=messageSent" method="post">
