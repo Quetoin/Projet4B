@@ -18,10 +18,10 @@
 
 		            <h3><a href="../public/index.php?route=post&articleId=<?=htmlspecialchars($article->getId());?>"><?=$article->getTitle();?></a></h3>
 
-                    <p>Publié le : <?= htmlspecialchars($article->getDate());?>
+                    <p>Publié le : <?= htmlspecialchars($article->getDate());?></p>
 
-		            <p><?= substr($article->getContent(),0,400);?>
-                    <?=strlen($article->getContent()) > 400 ? "...<a href='../public/index.php?route=post&articleId=".htmlspecialchars($article->getId())."'><i>Lire la suite</i></a>" : "" ;?>
+		            <p><?= substr(htmlspecialchars_decode($article->getContent()),0,400);?>
+                    <?=strlen(htmlspecialchars_decode($article->getContent())) > 400 ? "...<a href='../public/index.php?route=post&articleId=".htmlspecialchars($article->getId())."'><i>Lire la suite</i></a>" : "" ;?>
                     </p>
 
                     

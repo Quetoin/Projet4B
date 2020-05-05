@@ -1,5 +1,4 @@
-<?php $title = 'A propos'; ?>
-
+<?php $this->title = 'Ma biographie'; ?>
 
 <h1 class="titresWhite">Ma biographie</h1>
 

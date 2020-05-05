@@ -2,6 +2,10 @@
 
 namespace Projet4B\config;
 
+
+// Classe permettant de gérer les requêtes des variables superglobales
+// GET, POST et SESSION
+
 class Request{
 
 	private $get;

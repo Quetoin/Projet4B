@@ -2,6 +2,7 @@
 
 namespace Projet4B\src\constraint;
 
+// Classe qui définit les 3 contraintes qui vont permettre de valider ou non un contenu avant son envoi en BDD 
 class Constraint{
 
 

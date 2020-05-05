@@ -88,7 +88,7 @@
 
 				<div id="toFillBarre"></div>
 
-				<a href="index.php" id="imgLogoA"><img src="img/logoJF.jpg" id="imgLogo" alt="imgLogo"></a>
+				<a href="index.php" id="imgLogoMobileA"><img src="img/logoJF.jpg" id="imgLogoMobile" alt="imgLogo"></a>
 
 
 		    </div>

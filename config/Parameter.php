@@ -2,6 +2,9 @@
 
 namespace Projet4B\config;
 
+
+// Class permettant de récupérer les paramètres GET et POST
+
 class Parameter{
 	
 	private $parameter;

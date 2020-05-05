@@ -8,13 +8,12 @@
 
     <div id="postAlone">
 
-
         <?php
             if($this->session->get("role") === "admin"){
         ?>
                 <form method="post" action="../public/index.php?route=editPost&articleId=<?=$article->getId();?>">
 
-                    <h2><?=$article->getTitle();?></h2>
+                    <h2><?=htmlspecialchars_decode($article->getTitle());?></h2>
 
                     <label for="content"></label><br>
                     <input type="text" id="content" name="content" value="<?=$article->getContent();?>" class="editable"><br>
@@ -26,8 +25,8 @@
         <?php
             }else{
         ?>
-                <h2><?=$article->getTitle();?></h2>
-                <p><?=$article->getContent();?></p>
+                <h2><?=htmlspecialchars_decode($article->getTitle());?></h2>
+                <p><?=htmlspecialchars_decode($article->getContent());?></p>
 
                 <p>Publié le : <?= htmlspecialchars($article->getDate());?> par <?= htmlspecialchars($article->getAuthor());?></p>
         <?php

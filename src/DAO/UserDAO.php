@@ -5,9 +5,11 @@ namespace Projet4B\src\DAO;
 use Projet4B\src\model\User;
 use Projet4B\config\Parameter;
 
+
+// Class fille pour gérer toutes les requêtes en lien avec les utilisateurs
 class UserDAO extends DAO{
 
-
+        // Méthode pour créer les objets User
         private function buildObject($row){
 
                 $user = new User();
@@ -20,14 +22,14 @@ class UserDAO extends DAO{
         }
 
 
-        public function getUsers(){
+        public function getUsers(){ // Récupère la liste des utilisateurs
 
                 $sql = "SELECT * FROM users";
                 $result = $this->createQuery($sql);
 
                 $users = [];
 
-                foreach($result as $row){
+                foreach($result as $row){ // Boucle permettant de créer un objet User
 
                         $userId = $row["Id"];
                         $users[$userId] = $this->buildObject($row);
@@ -40,14 +42,14 @@ class UserDAO extends DAO{
         }
 
 
-	public function register(Parameter $post){
+	public function register(Parameter $post){ // Inscription avec encryptage du password
 
                 $sql = "INSERT INTO users (user, password, role_id) VALUES (?,?,?)";
                 $this->createQuery($sql,[$post->get("user"),password_hash($post->get("password"),PASSWORD_BCRYPT),2]);
         }
 
 
-        public function checkUser(Parameter $post){
+        public function checkUser(Parameter $post){ // Va vérifier si le nom d'utilisateur n'est pas déjà pris
 
                 $sql = "SELECT COUNT(user) FROM users WHERE user = ?";
                 $result = $this->createQuery($sql,[$post->get("user")]);
@@ -59,7 +61,7 @@ class UserDAO extends DAO{
         }
 
 
-        public function login(Parameter $post){
+        public function login(Parameter $post){ // Connexion, vérification du mot de passe.
 
                 $sql = 'SELECT users.Id, users.role_id, users.password, role.name FROM users INNER JOIN role ON role.id = users.role_id WHERE user = ?';
 
@@ -75,33 +77,7 @@ class UserDAO extends DAO{
         }
 
 
-        public function updatePassword(Parameter $post,$user){
-
-                $sql = "SELECT * FROM users WHERE user = ?";
-                $data = $this->createQuery($sql,$user);
-                $result = $data->fetch();
-                $isPasswordValid = password_verify($post->get("oldPassword"), $result["password"]);
-
-                if($isPasswordValid){
-                        $sql = "UPDATE users SET password = ? WHERE user = ?";
-                        $this->createQuery($sql,[password_hash($post->get("password"), PASSWORD_BCRYPT),$user]);
-                        
-                }
-
-                return $isPasswordValid;
-
-        }
-
-
-        public function deleteAccount($user){
-
-                $sql = "DELETE FROM users WHERE user = ?";
-                $this->createQuery($sql,[$user]);
-
-        }
-
-
-        public function deleteUser($userId){
+        public function deleteUser($userId){ // Suppression d'un utilisateur par l'administrateur
 
                 $sql = "DELETE FROM users WHERE Id = ?";
                 $this->createQuery($sql,[$userId]);

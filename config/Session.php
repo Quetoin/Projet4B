@@ -2,6 +2,8 @@
 
 namespace Projet4B\config;
 
+
+//Classe qui permet de gérer les variables de sessions
 class Session{
 	
 	private $session;
@@ -18,11 +20,13 @@ class Session{
 
 
 	public function get($name){
-		if(isset($_SESSION[$name]))
-		return $_SESSION[$name];
+		if(isset($_SESSION[$name])){
+			return $_SESSION[$name];
+		}
 	}
 
 
+	//Méthode permettant d'afficher une variable de session et de l'écraser de suite après
 	public function show($name){
 		if(isset($_SESSION[$name])){
 			$key = $this->get($name);

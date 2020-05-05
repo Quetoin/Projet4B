@@ -2,6 +2,8 @@
 
 namespace Projet4B\src\constraint;
 
+// Classe qui va permettre d'appeler la bonne validation en fonction de l'objet à valider
+// et va renvoyer les erreurs s'il y'en a.
 class Validation{
 
     public function validate($data, $name){
@@ -20,7 +22,9 @@ class Validation{
             $errors = $commentValidation->check($data);
             return $errors;
 
-        }elseif($name === 'User'){
+        }
+
+        elseif($name === 'User'){
 
             $userValidation = new UserValidation();
             $errors = $userValidation->check($data);

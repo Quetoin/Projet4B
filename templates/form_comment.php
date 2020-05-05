@@ -11,7 +11,7 @@ $author = isset($post) ? htmlspecialchars($post->get("author")) : "";
 <form method="post" action="../public/index.php?route=addComment&articleId=<?= htmlspecialchars($article->getId()); ?>">
 
     <label for="content">Message</label><br>
-    <textarea id="content" name="content" placeholder="<?=$content?>"></textarea><br>
+    <textarea id="content" name="content" placeholder="Commentaire"></textarea><br>
      <?= isset($errors['content']) ? $errors['content'] : ''; ?>
 
     <input type="submit" value="<?=$submit?>" id="submit" name="submit">

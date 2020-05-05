@@ -2,7 +2,8 @@
 
 namespace Projet4B\src\model;
 
-
+// Objet Article avec uniquement des getters et des setters
+// Cet objet est créé dans les DAO
 class Article{
 	
 	private $id;

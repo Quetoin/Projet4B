@@ -35,7 +35,7 @@
 	       
 	       <tr class="tr<?=$countTr;?>">
 		        <td class="title"><a href="../public/index.php?route=post&articleId=<?=htmlspecialchars($article->getId());?>"><?= $article->getTitle();?></a></td>
-		        <td class="content"><?= substr($article->getContent(),0,150);?>...<a href="../public/index.php?route=post&articleId=<?=htmlspecialchars($article->getId());?>"><i>Lire la suite</i></a></td>
+		        <td class="content"><?= substr(htmlspecialchars_decode($article->getContent()),0,150);?>...<a href="../public/index.php?route=post&articleId=<?=htmlspecialchars($article->getId());?>"><i>Lire la suite</i></a></td>
 		        <td class="date"><?= htmlspecialchars($article->getDate());?></td>
 		        <td class="actions">
 		        	<span title="Modifier l'article"><a href="../public/index.php?route=post&articleId=<?=htmlspecialchars($article->getId());?>" onclick="startingTiny();"><i class="far fa-edit"></i></a></span>
